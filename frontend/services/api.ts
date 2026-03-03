@@ -1,4 +1,5 @@
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api`;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_URL = `${BASE_URL.replace(/\/$/, "")}/api`;
 
 export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
     const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
